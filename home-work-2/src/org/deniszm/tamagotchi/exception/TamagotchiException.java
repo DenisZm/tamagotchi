@@ -1,4 +1,4 @@
-package org.deniszm.tamagotchi.model;
+package org.deniszm.tamagotchi.exception;
 
 /**
  * TamagotchiException
@@ -7,7 +7,7 @@ package org.deniszm.tamagotchi.model;
 public class TamagotchiException extends Exception {
     private String detail;
 
-    TamagotchiException(String s) {
+    public TamagotchiException(String s) {
         detail = s;
     }
 

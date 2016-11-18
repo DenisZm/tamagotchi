@@ -1,5 +1,7 @@
 package org.deniszm.tamagotchi.model;
 
+import org.deniszm.tamagotchi.exception.TamagotchiException;
+
 /**
  * Common Pet abilities.
  * Created by Denis on 10.11.2016.

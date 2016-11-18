@@ -1,5 +1,6 @@
 package org.deniszm.tamagotchi.app;
 
+import org.deniszm.tamagotchi.exception.TamagotchiException;
 import org.deniszm.tamagotchi.model.*;
 
 import java.util.InputMismatchException;
