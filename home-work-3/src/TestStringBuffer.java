@@ -4,12 +4,11 @@
 public class TestStringBuffer implements Test {
 
     @Override
-    public void printString() {
-        StringBuffer str = new StringBuffer("Initial test string");
-        str.append(" add some words");
-        str.append(" and another word");
-        str.append(" more more words").append(" test append");
-        str.append(" springs");
-        System.out.println(str);
+    public void createString(String sample, int count ) {
+        StringBuffer resultString = new StringBuffer();
+        for (int i = 0; i < count; i++) {
+            resultString.append(sample);
+        }
+        // return String.valueOf(resultString);
     }
 }
