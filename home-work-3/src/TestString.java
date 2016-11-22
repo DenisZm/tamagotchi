@@ -7,7 +7,7 @@ public class TestString implements Test {
     public void createString(String sample, int count ) {
         String resultString = new String();
         for (int i = 0; i < count; i++) {
-            resultString += sample;
+            resultString.concat(sample);
         }
         // return resultString;
     }
