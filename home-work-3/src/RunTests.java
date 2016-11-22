@@ -3,6 +3,9 @@
  */
 public class RunTests {
 
+    private static final String SAMPLE_STRING = "add word ";
+    private static final int COUNT = 1000;
+
     public static void main(String[] args) {
         System.out.println("Test String");
         Test test1 = new TestString();
@@ -26,7 +29,7 @@ public class RunTests {
         long endTime;
 
         startTime = System.nanoTime();
-        t.printString();
+        t.createString(SAMPLE_STRING, COUNT);
         endTime = System.nanoTime();
 
         return endTime - startTime;
