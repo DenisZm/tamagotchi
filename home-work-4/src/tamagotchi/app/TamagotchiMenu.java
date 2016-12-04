@@ -31,7 +31,7 @@ class TamagotchiMenu {
             System.out.printf("%d: %s (энергия: %d%%)%n", i + 1,
                     list[i].getName(), list[i].getEnergy());
         }
-        currentPet = this.pets.select(getUserInput(list.length));
+        currentPet = this.pets.select(getUserInput(list.length) -1 );
         System.out.printf("\n~ Вы выбрали %sа ~\n", currentPet.getName());
     }
 

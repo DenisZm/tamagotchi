@@ -1,6 +1,7 @@
 package tamagotchi.app;
 
 import tamagotchi.exception.TamagotchiException;
+import tamagotchi.model.*;
 
 /**
  * Play game.
@@ -8,7 +9,12 @@ import tamagotchi.exception.TamagotchiException;
  */
 public class TamagotchiPlay {
     public static void main(String[] args) {
-        PetsList pets = new PetsList();
+        Pet[] petsInitList = {
+                new Cat("Котик"),
+                new Dog("Песик"),
+                new Hedgehog("Ежик")};
+        PetsList pets = new PetsList(petsInitList);
+
         TamagotchiMenu menu = new TamagotchiMenu(pets);
 
         try {

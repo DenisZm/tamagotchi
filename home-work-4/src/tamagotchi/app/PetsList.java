@@ -1,11 +1,9 @@
 package tamagotchi.app;
 
-import tamagotchi.model.Cat;
-import tamagotchi.model.Dog;
-import tamagotchi.model.Hedgehog;
 import tamagotchi.model.Pet;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * List of available pets.
@@ -14,10 +12,8 @@ import java.util.ArrayList;
 public class PetsList {
     private ArrayList<Pet> pets = new ArrayList<>();
 
-    public PetsList() {
-        this.pets.add(new Cat("Котик"));
-        this.pets.add(new Dog("Песик"));
-        this.pets.add(new Hedgehog("Ежик"));
+    public PetsList(Pet[] pets) {
+        Collections.addAll(this.pets, pets);
     }
 
     public Pet[] getList() {
@@ -27,7 +23,7 @@ public class PetsList {
     }
 
     public Pet select(int index) {
-        return this.pets.get(index - 1);
+        return this.pets.get(index);
     }
 
     public void delete(Pet pet) {
