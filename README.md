@@ -1,1 +1,2 @@
-"# My project's README" 
+Вынес тамагочи в отдельный пакет,  
+tamagotchi == home-work-5
