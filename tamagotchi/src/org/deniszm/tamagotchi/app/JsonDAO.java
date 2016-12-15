@@ -6,6 +6,7 @@ import com.google.gson.stream.JsonReader;
 import org.deniszm.tamagotchi.model.*;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Type;
 import java.util.*;
 
@@ -59,10 +60,11 @@ public class JsonDAO implements PetDAO {
 
     private class PetSerializer implements JsonSerializer<Pet> {
         @Override
-        public JsonElement serialize(Pet src, Type typeOfSrc, JsonSerializationContext context) {
+        public JsonElement serialize(Pet src, Type typeOfSrc,
+                                     JsonSerializationContext context) {
             JsonObject result = new JsonObject();
 
-            result.addProperty("type", src.getClass().getSimpleName());
+            result.addProperty("type", src.getClass().getName());
             result.addProperty("name", src.getName());
             result.addProperty("energy", src.getEnergy());
 
@@ -73,20 +75,27 @@ public class JsonDAO implements PetDAO {
     private class PetDeserializer implements JsonDeserializer<Pet> {
 
         @Override
-        public Pet deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-            JsonObject object = json.getAsJsonObject();
+        public Pet deserialize(JsonElement json, Type typeOfT,
+                               JsonDeserializationContext context)
+                throws JsonParseException {
+
+            JsonObject petJson = json.getAsJsonObject();
             Pet pet = null;
-            switch (object.get("type").getAsString()) {
-                case "Cat" :
-                    pet = new Cat(object.get("name").getAsString(), object.get("energy").getAsInt());
-                    break;
-                case "Dog" :
-                    pet = new Dog(object.get("name").getAsString(), object.get("energy").getAsInt());
-                    break;
-                case "Hedgehog" :
-                    pet = new Cat(object.get("name").getAsString(), object.get("energy").getAsInt());
-                    break;
+
+            try {
+                Class petClass = Class.forName(petJson.get("type").getAsString());
+
+                Object[] petProperty = new Object[]{petJson.get("name").getAsString(),
+                        petJson.get("energy").getAsInt()};
+
+                Constructor[] petConstructor = petClass.getDeclaredConstructors();
+
+                pet = (Pet) petConstructor[0].newInstance(petProperty);
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
             return pet;
         }
     }
