@@ -13,7 +13,7 @@ import java.util.Scanner;
 /**
  * Created by Denis on 09.12.2016.
  */
-public class FileDAO {
+public class FileDAO implements PetDAO {
     private final File file;
 
     public FileDAO(File file) throws IOException {
@@ -23,6 +23,7 @@ public class FileDAO {
         this.file = file;
     }
 
+    @Override
     public List<Pet> load() {
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
@@ -54,6 +55,7 @@ public class FileDAO {
         }
     }
 
+    @Override
     public void save(List<Pet> pets) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(file);

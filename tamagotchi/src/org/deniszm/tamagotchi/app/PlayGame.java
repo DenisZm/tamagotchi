@@ -14,7 +14,8 @@ public class PlayGame {
     public static void main(String[] args) throws IOException, TamagotchiException {
 
         File savefile = new File("tamagotchi.save");
-        FileDAO dao = new FileDAO(savefile);
+//        PetDAO dao = new FileDAO(savefile);
+        PetDAO dao = new JsonDAO(savefile);
         PetsList pets = new PetsList(dao);
         ConsoleMenu menu = new ConsoleMenu(pets);
 

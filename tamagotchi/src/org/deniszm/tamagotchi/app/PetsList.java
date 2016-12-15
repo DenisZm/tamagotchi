@@ -10,9 +10,9 @@ import java.util.List;
  */
 public class PetsList {
     private List<Pet> pets = new ArrayList<>();
-    private FileDAO dao;
+    private PetDAO dao;
 
-    public PetsList(FileDAO dao) {
+    public PetsList(PetDAO dao) {
         this.dao = dao;
     }
 
